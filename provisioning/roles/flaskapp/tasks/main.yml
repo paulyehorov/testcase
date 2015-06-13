@@ -1,0 +1,30 @@
+---
+
+ - name: Install environment packages
+   apt: pkg={{ item }} state=installed
+   with_items:
+     - env_packages
+
+ - name: Install Flask and extensions
+   pip: name={{ item }}
+   with_items:
+     - flask_extensions
+
+ - name: Create application home directory
+   file: path={{ app_home_dir }} state=directory owner=root group=root
+
+ - name: Copy application files to home directory
+   file: src={{ item }} dest={{ app_home_dir }} mode=0751 owner=root group=root
+   with_items:
+     - flaskapp.py
+
+ - name: Create application database
+   shell: mongo  use testcase-flask
+
+ - name: Create virtualenv in application home directory
+   command: virtualenv venv
+   args:
+     chdir: "{{ app_home_dir}}"
+
+ - name: Run application
+   command: /usr/bin/python flaskapp.py

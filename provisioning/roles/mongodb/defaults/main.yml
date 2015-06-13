@@ -1,0 +1,11 @@
+---
+
+url_mongodb_key: "http://keyserver.ubuntu.com/pks/lookup?op=get&search="
+mongodb_repository: "deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen"
+mongodb_version: 3.0.4-rc0
+mongodb_packages:
+  - mongodb-org={{ mongodb_version }}
+  - mongodb-ord-server={{ mongodb_version }}
+  - mongodb-org-shell={{ mongodb_version }}
+  - mongodb-org-mongos={{ mongodb_version }}
+  - mongodb-org-tools={{ mongodb_version }}

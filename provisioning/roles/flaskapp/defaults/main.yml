@@ -1,0 +1,11 @@
+---
+
+app_home_dir: '/var/www/testcase-flask'
+env_packages:
+  - python-pip
+  - python-dev
+  - build-essential
+flask_extensions:
+  - virtualenv
+  - Flask
+  - Flask-PyMongo

@@ -1,0 +1,11 @@
+---
+
+ - hosts: testcase-flask
+   gather_facts: yes
+
+   roles:
+     - role: mongodb
+       tags: mongodb
+
+     - role: flaskapp
+       tags: flaskapp

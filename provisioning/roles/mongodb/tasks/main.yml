@@ -1,0 +1,13 @@
+---
+
+ - name: Add reposttory keys
+   apt_key: url={{ url_mongodb_key }}0x7F0CEB10
+
+ - name: Add MongoDB repository to sources list
+   apt_repository: repo="{{ mongodb_repository }}" update_cache=yes
+
+ - name: Install MongoDB packages
+   apt: pkg={{ item }} state=installed
+   with_items:
+     - mongodb_packages
+   notify: Restart MongoDB
